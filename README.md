@@ -1,6 +1,6 @@
 # Lab - Class 401 Python Night
 
-### Project: madlib-cli
+## Project: madlib-cli
 
 ### Author: Pedro Perez Alvarez
 
