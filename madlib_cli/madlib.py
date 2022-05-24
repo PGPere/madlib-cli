@@ -1,8 +1,12 @@
 def read_template(string):
     """ This function opens the file and reads content"""
-    with open(string, 'r') as f:
-        content = f.read()
-        return content
+    import os
+
+    if os.path.isfile(string):
+        with open(string, 'r') as f:
+            contents = f.read()
+            return contents
+    raise FileNotFoundError("File/path does not exist")
 
 
 def parse_template(string):
@@ -21,7 +25,7 @@ def parse_template(string):
         return new_string, tuple(text_in_curly)
 
 
-def merge(a, b):
+def merge(a, b1):
     """ This function merges the information - story  and user input"""
     import re
 
@@ -29,11 +33,11 @@ def merge(a, b):
     i = 0
     c = 0
     while i < len(words):
-        if re.search("{}", words[i]) and c < len(b):
-            words[i] = words[i].replace('{}', b[c])
+        if re.search("{}", words[i]) and c < len(b1):
+            words[i] = words[i].replace('{}', b1[c])
             i += 1
             c += 1
-        elif c < len(b):
+        elif c < len(b1):
             i += 1
         else:
             break
@@ -49,8 +53,8 @@ if __name__ == '__main__':
     the words to complete it. Since you don’t know what the story’s about, the result is a funny story.
     """)
 
-    contents = read_template("/Users/karenperez/pgCodeFellows/class401/madlib-cli/assets/make_me_a_video_game_template.txt")
-    story = parse_template(contents)
+    contents1 = read_template("/Users/karenperez/pgCodeFellows/class401/madlib-cli/assets/make_me_a_video_game_template.txt")
+    story = parse_template(contents1)
 
     print(""" Please enter the information requested below""")
 
