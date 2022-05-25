@@ -1,8 +1,11 @@
+
+
 def read_template(string):
     """ This function opens the file and reads content"""
+
     import os
 
-    if os.path.isfile(string):
+    if os.path.exists(string):
         with open(string, 'r') as f:
             contents = f.read()
             return contents
@@ -53,7 +56,8 @@ if __name__ == '__main__':
     the words to complete it. Since you don’t know what the story’s about, the result is a funny story.
     """)
 
-    contents1 = read_template("/Users/karenperez/pgCodeFellows/class401/madlib-cli/assets/make_me_a_video_game_template.txt")
+    contents1 = read_template(
+        '../assets/make_me_a_video_game_template.txt')
     story = parse_template(contents1)
 
     print(""" Please enter the information requested below""")
@@ -68,8 +72,10 @@ if __name__ == '__main__':
         b.append(x)
         i1 += 1
 
-    print(""" Please see the funny story you created below
+    print(""" 
     
+    Please see the funny story you created below
+
     """)
 
     funny_story = merge(story[0], b)
