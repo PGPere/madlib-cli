@@ -18,11 +18,11 @@ def parse_template(string):
 
     text_in_curly = (re.findall('{(.+?)}', string))
 
-    words_extract = set(text_in_curly)
+    words_extract = list(text_in_curly)
 
     new_string = string
     for word in words_extract:
-        new_string = new_string.replace(word, "")
+        new_string = new_string.replace(word, '')
 
     if new_string != string:
         return new_string, tuple(text_in_curly)
@@ -81,3 +81,6 @@ if __name__ == '__main__':
     funny_story = merge(story[0], b)
 
     print(funny_story)
+
+    with open('../assets/my_story.txt', 'w') as f2:
+        f2.write(funny_story)
